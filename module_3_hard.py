@@ -11,14 +11,20 @@ def calculate_structure_sum(*args):
         for i in args:
             if isinstance(i, int):
                 counter += i
-            elif isinstance(i, str):
-                if i is not int:
-                    counter += len(i)
-            elif isinstance(i, dict):
-                if i.keys() is not int:
-                    counter += len(i.keys())
-                    counter += len(i.values())
-            elif isinstance(i, (list, tuple, set)):
+            if isinstance(i, str):
+                counter += len(i)
+            if isinstance(i, dict):
+                for key in i.keys():
+                    if isinstance(key, int):
+                        counter += key
+                    else:
+                        counter += len(key)
+                for value in i.values():
+                    if isinstance(value, int):
+                        counter += value
+                    else:
+                        counter += len(value)
+            if isinstance(i, (list, tuple, set)):
                 counter += calculate_structure_sum(*i)
 
         return counter

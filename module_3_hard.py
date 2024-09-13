@@ -15,15 +15,9 @@ def calculate_structure_sum(*args):
                 counter += len(i)
             if isinstance(i, dict):
                 for key in i.keys():
-                    if isinstance(key, int):
-                        counter += key
-                    else:
-                        counter += len(key)
+                    counter += calculate_structure_sum(key)
                 for value in i.values():
-                    if isinstance(value, int):
-                        counter += value
-                    else:
-                        counter += len(value)
+                    counter += calculate_structure_sum(value)
             if isinstance(i, (list, tuple, set)):
                 counter += calculate_structure_sum(*i)
 

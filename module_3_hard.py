@@ -4,7 +4,7 @@ data_structure = [
 (6, {'cube': 7, 'drum': 8}),
 "Hello",
 ((), [{(2, 'Urban', ('Urban2', 35))}])
-]
+] # БУДЕШЬ СПИСЫВАТЬ - НИЧЕМУ НЕ НАУЧИШЬСЯ !
 
 def calculate_structure_sum(*args):
         counter = 0
